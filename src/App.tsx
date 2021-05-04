@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { Suspense, useState } from 'react';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 import styles from './app.module.scss';
-import './css/common.scss';
+import { Login } from './components/login/login';
+import { baseRoutes } from './routes';
 
-const App: React.FC<{}> = () => {
+const AppView: React.FC = () => {
+  const routedComponent = useRoutes(Object.values(baseRoutes));
+
   return (
-    <div className={styles.demoCss}>
-      Initial Setup
-    </div>
+    <Suspense fallback={<div>Loading view...</div>}>
+      <div className={styles.demoCss}>
+        {/* <NavBar /> */}
+        {routedComponent}
+      </div>
+    </Suspense>
+  );
+};
+
+const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  if (isLoggedIn) {
+    return <Login onLoggedIn={() => setIsLoggedIn(true)} />;
+  }
+
+  return (
+    <BrowserRouter>
+      <AppView />
+    </BrowserRouter>
   );
 };
 
