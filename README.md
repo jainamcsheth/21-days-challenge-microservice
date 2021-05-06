@@ -1,6 +1,6 @@
 # 21 Days Challenge Application
 
-Awesome way to turn your goals into habbit. Provides unique challenges each with 21 unique tasks unlocked each day and much more...\
+Awesome way to turn your goals into habit. Provides unique challenges each with 21 unique tasks unlocked each day and much more...\
 Front end developed using React + TypeScript and backend is powered by Serverless Microservices developed using AWS services.
 
 ## Initial Setup
