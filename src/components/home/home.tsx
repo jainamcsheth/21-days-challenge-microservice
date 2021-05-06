@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '../card/card';
-import { Challenge } from '../challenge/challenge';
+import { ChallengeDetails } from '../challenge-details/challenge-details';
+import { ChallengeList } from '../challenge-list/challenge-list';
 import { Day } from '../day/day';
 import { User } from '../user/user';
 import styles from './home.module.scss';
@@ -21,19 +21,10 @@ export const Home: React.FC = () => (
 
         <div className={styles.mainContent}>
 
-          <section className={styles.row}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </section>
+          <ChallengeList />
 
 
-
-          <Challenge />
+          <ChallengeDetails />
           <section className={styles.row}>
             <Day />
             <Day />
