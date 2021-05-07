@@ -1,4 +1,5 @@
 import React from 'react';
+import { Challenge } from './components/challenge/challenge';
 import { Home } from './components/home/home';
 
 const LazyLoadedComponent = React.lazy(
@@ -9,6 +10,10 @@ export const baseRoutes = {
   Home: {
     path: '/',
     element: <Home />,
+  },
+  Challenge: {
+    path: '/challenge',
+    element: <Challenge />,
   },
   TestLazy: {
     path: '/testLazyLoad',
