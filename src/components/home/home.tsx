@@ -24,24 +24,21 @@ const challengeListData = [{
 }]
 
 export const Home: React.FC = () => (
-  <div className={styles.outerBg}>
-    <div className={styles.innerBg}>
+  <>
+    <div className={styles.headerRow}>
+      <nav>burger icon</nav>
+      <span className={styles.progress}>32% Done</span>
+      <BackButton />
+    </div>
 
-      <div className={styles.headerRow}>
-        <nav>burger icon</nav>
-        <span className={styles.progress}>32% Done</span>
-        <BackButton />
+    <div className={styles.row}>
+      <div className={styles.leftBar}>
+        <UserDetails />
       </div>
-
-      <div className={styles.row}>
-        <div className={styles.leftBar}>
-          <UserDetails />
-        </div>
-
-        <div className={styles.mainContent}>
-          <ChallengeList challengeListData={challengeListData} />
-        </div>
+      <div className={styles.mainContent}>
+        <ChallengeList challengeListData={challengeListData} />
       </div>
     </div>
-  </div>
+  </>
 )
+

@@ -28,28 +28,25 @@ const challengeDaysList = challengeDays.map((item) =>
 )
 
 export const Challenge: React.FC = () => (
-  <div className={styles.outerBg}>
-    <div className={styles.innerBg}>
+  <>
+    <div className={styles.headerRow}>
+      <nav>burger icon</nav>
+      <span className={styles.progress}>32% Done</span>
+      <BackButton />
+    </div>
 
-      <div className={styles.headerRow}>
-        <nav>burger icon</nav>
-        <span className={styles.progress}>32% Done</span>
-        <BackButton />
+    <div className={styles.row}>
+      <div className={styles.leftBar}>
+        <UserDetails />
       </div>
 
-      <div className={styles.row}>
-        <div className={styles.leftBar}>
-          <UserDetails />
-        </div>
+      <div className={styles.mainContent}>
+        <ChallengeDetails />
+        <section className={styles.row}>
+          {challengeDaysList}
+        </section>
 
-        <div className={styles.mainContent}>
-          <ChallengeDetails />
-          <section className={styles.row}>
-            {challengeDaysList}
-          </section>
-
-        </div>
       </div>
     </div>
-  </div>
+  </>
 )
