@@ -1,8 +1,6 @@
 import React from "react";
-import { BackButton } from "../back-button/back-button";
 import { ChallengeDetails } from "../challenge-details/challenge-details";
 import { Day } from "../day/day";
-import { UserDetails } from "../user-details/user-details";
 import styles from './challenge.module.scss';
 
 const challengeDays = [{
@@ -29,24 +27,12 @@ const challengeDaysList = challengeDays.map((item) =>
 
 export const Challenge: React.FC = () => (
   <>
-    <div className={styles.headerRow}>
-      <nav>burger icon</nav>
-      <span className={styles.progress}>32% Done</span>
-      <BackButton />
-    </div>
+    <div className={styles.mainContent}>
+      <ChallengeDetails />
+      <section className={styles.row}>
+        {challengeDaysList}
+      </section>
 
-    <div className={styles.row}>
-      <div className={styles.leftBar}>
-        <UserDetails />
-      </div>
-
-      <div className={styles.mainContent}>
-        <ChallengeDetails />
-        <section className={styles.row}>
-          {challengeDaysList}
-        </section>
-
-      </div>
     </div>
   </>
 )

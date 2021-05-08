@@ -6,7 +6,7 @@ export const UserDetails: React.FC = () => (
     <div className={styles.userIcon}>
       <img
         className={styles.userImg}
-        src="https://via.placeholder.com/100"
+        src="https://picsum.photos/100/100"
         alt="placeholder img"
       />
       <h1 className={styles.heading}>

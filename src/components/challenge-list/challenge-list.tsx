@@ -2,22 +2,6 @@ import React from 'react';
 import { Card } from '../card/card';
 import styles from './challenge-list.module.scss';
 
-// const challengeData = [{
-//   name: 'SOmething',
-//   id: 2121,
-//   icon: 'some url',
-//   status: 'Not Started'
-// },
-// {
-//   name: 'SOmething2',
-//   id: 1111,
-//   icon: 'some url icon',
-//   status: 'Not Started'
-// }]
-
-// const challengeList = challengeData.map((item) => <Card key={item.id} />
-// )
-
 export type ChallengeListData = {
   /**
    * Name of the challenge
@@ -39,7 +23,15 @@ export type ChallengeListData = {
    * TODO Jainam: This should chage o either be of some specific type. Check later.
    */
   status: string;
+
+  /**
+   * Info of the challenge.
+   * TODO Jainam: This should chage o either be of some specific type. Check later.
+   */
+  info: string;
 };
+
+const bgList = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8']
 
 export interface ChallengeListProps {
   /**
@@ -53,12 +45,14 @@ export const ChallengeList: React.FC<ChallengeListProps> = ({
 }) => (
   // const challengeList = challengeListData.map((item) => <Card key={item.id} />
   <section className={styles.row}>
-    {challengeListData.map((item) => (
+    {challengeListData.map((item, index) => (
       <Card
         key={item.id}
         name={item.name}
         status={item.status}
         url={item.icon}
+        info={item.info}
+        bgNo={bgList[index % 8  ]}
       />
     ))}
   </section>
