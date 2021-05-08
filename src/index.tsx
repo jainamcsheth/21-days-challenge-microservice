@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { Account } from './components/user-cognito/Accounts';
 import './css/common.scss';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Account>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Account>
   </React.StrictMode>,
   document.getElementById('root'),
 );

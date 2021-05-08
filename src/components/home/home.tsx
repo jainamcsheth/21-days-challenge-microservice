@@ -88,7 +88,7 @@ export const Home: React.FC = () => (
         <ChallengeList challengeListData={challengeListData} />
       </div>
 
-      <Link to="/challenge">Hello To challenge</Link>
+      <Link to="/challenge">To challenge, will change</Link>
     </div>
   </>
 )
