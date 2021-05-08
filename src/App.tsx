@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
-import styles from './app.module.scss';
+// import styles from './app.module.scss';
 import { Login } from './components/login/login';
 import { baseRoutes } from './routes';
 
@@ -9,10 +9,8 @@ const AppView: React.FC = () => {
 
   return (
     <Suspense fallback={<div>Loading view...</div>}>
-      <div className={styles.demoCss}>
-        {/* <NavBar /> */}
-        {routedComponent}
-      </div>
+      {/* <NavBar /> */}
+      {routedComponent}
     </Suspense>
   );
 };

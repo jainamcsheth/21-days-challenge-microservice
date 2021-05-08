@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
 import styles from './day.module.scss';
 
-export const Day: React.FC<{ dayNumber: number }> = ({ dayNumber }) => (
-  <div className={styles.dayWrapper}>
-    {dayNumber}
-  </div>
-)
+export interface DayProps {
+  /**
+   * Current Day Number
+   */
+  dayNumber: number;
+}
+
+export const Day: React.FC<DayProps> = ({ dayNumber }) => (
+  <div className={styles.dayWrapper}>{dayNumber}</div>
+);
