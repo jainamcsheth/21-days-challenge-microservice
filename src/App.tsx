@@ -11,10 +11,10 @@ const AppView: React.FC = () => {
     <Suspense fallback={<div>Loading view...</div>}>
       <div className={styles.outerBg}>
         <div className={styles.innerBg}>
-          <div className={styles.demoCss}>
-            {/* <NavBar /> */}
-            {routedComponent}
-          </div>
+
+          {/* <NavBar /> */}
+          {routedComponent}
+
         </div>
       </div>
     </Suspense>

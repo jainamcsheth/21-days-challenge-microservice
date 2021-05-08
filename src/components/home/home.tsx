@@ -1,27 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BackButton } from '../back-button/back-button';
-import { ChallengeList } from '../challenge-list/challenge-list';
+import {
+  ChallengeList,
+  ChallengeListData
+} from '../challenge-list/challenge-list';
 import { UserDetails } from '../user-details/user-details';
 import styles from './home.module.scss';
 
-const challengeListData = [{
-  name: 'Getting up early',
-  id: 2121,
-  icon: 'https://dummyimage.com/250x250/000000/ffffff&text=dummyimage.com+rocks!',
-  status: 'In progress'
-},
-{
-  name: 'Cooking',
-  id: 1111,
-  icon: 'https://dummyimage.com/250x250/000000/ffffff&text=cooking.is.fun!',
-  status: 'Not Started'
-},
-{
-  name: 'Go to bed early',
-  id: 1001,
-  icon: 'https://dummyimage.com/250x250/000000/ffffff&text=impossible.to.possible!',
-  status: 'Not Started'
-}]
+const challengeListData: ChallengeListData[] = [
+  {
+    name: 'Getting up early',
+    id: 2121,
+    icon:
+      'https://dummyimage.com/250x250/000000/ffffff&text=dummyimage.com+rocks!',
+    status: 'In progress',
+  },
+  {
+    name: 'Cooking',
+    id: 1111,
+    icon: 'https://dummyimage.com/250x250/000000/ffffff&text=cooking.is.fun!',
+    status: 'Not Started',
+  },
+  {
+    name: 'Go to bed early',
+    id: 1001,
+    icon:
+      'https://dummyimage.com/250x250/000000/ffffff&text=impossible.to.possible!',
+    status: 'Not Started',
+  },
+];
 
 export const Home: React.FC = () => (
   <>
@@ -38,6 +46,8 @@ export const Home: React.FC = () => (
       <div className={styles.mainContent}>
         <ChallengeList challengeListData={challengeListData} />
       </div>
+
+      <Link to="/challenge">Hello To challenge</Link>
     </div>
   </>
 )
