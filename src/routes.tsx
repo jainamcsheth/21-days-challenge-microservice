@@ -1,34 +1,55 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
-import { Challenge } from './components/challenge/challenge';
+import { Navigate, PartialRouteObject } from 'react-router';
+import { ChallengeDetails } from './components/challenges/chalenge-details/challenge-details';
+import { Challenges } from './components/challenges/challenges';
 import { ForgotPassword } from './components/forgotpassword/forgotpassword';
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { SignUp } from './components/signup/signup';
 
-const LazyLoadedComponent = React.lazy(
-  () => import('./components/to-be-deleted/to-be-deleted'),
-);
+// const LazyLoadedComponent = React.lazy(
+//   () => import('./components/to-be-deleted/to-be-deleted'),
+// );
 
-// export const baseRoutes: { [key: string]: PartialRouteObject } = {
+export interface CustomRouteProps {
+  [key: string]: PartialRouteObject;
+}
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const baseRoutes = () => ({
+export const baseRoutes = (): CustomRouteProps => ({
   Home: {
     path: '/',
     element: <Home />,
+    children: [
+      {
+        path: '/',
+        element: <Challenges />,
+      },
+      {
+        path: '/challenges',
+        element: <Challenges />,
+      },
+      {
+        path: '/challenge/:challengeId',
+        element: <ChallengeDetails />,
+        // children: [
+        //   {
+        //     path: '/:taskNo',
+        //     element: <TaskDetails />
+        //   }
+        // ]
+      },
+    ],
   },
-  Challenge: {
-    path: '/challenge',
-    element: <Challenge />,
+  NotFound: {
+    path: '*',
+    element: <Navigate to="/" />,
   },
-  TestLazy: {
-    path: 'testLazyLoad',
-    element: <LazyLoadedComponent />,
-  },
+  // TestLazy: {
+  //   path: 'testLazyLoad',
+  //   element: <LazyLoadedComponent />,
+  // },
 });
 
-export const loginRoutes: any = (onLoggedIn: () => void) => ({
+export const loginRoutes = (onLoggedIn: () => void): CustomRouteProps => ({
   Login: {
     path: '/',
     element: <Login onLoggedIn={onLoggedIn} />,
@@ -40,5 +61,9 @@ export const loginRoutes: any = (onLoggedIn: () => void) => ({
   ForgotPassword: {
     path: '/forgotpassword',
     element: <ForgotPassword />,
+  },
+  NotFound: {
+    path: '*',
+    element: <Navigate to="/" />,
   },
 });

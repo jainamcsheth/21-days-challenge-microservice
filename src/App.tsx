@@ -1,16 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import styles from './app.module.scss';
 import { Status } from './components/user-cognito/status';
-import { baseRoutes, loginRoutes } from './routes';
+import { baseRoutes, CustomRouteProps, loginRoutes } from './routes';
+import { Loader } from './widgets/loader/loader';
 
 interface AppViewProps {
-  routes: any;
+  /**
+   * Desired routes to be loaded.
+   */
+  routes: CustomRouteProps;
 }
 
-const AppView: React.FC<AppViewProps> = ({ routes }: AppViewProps) => {
+const AppView: React.FC<AppViewProps> = ({ routes }) => {
   const routedComponent = useRoutes(Object.values(routes));
+  // TODO Aditi: Remove console.log once done
   // eslint-disable-next-line no-console
   console.log('Dum', routes);
 
@@ -27,11 +31,19 @@ const AppView: React.FC<AppViewProps> = ({ routes }: AppViewProps) => {
 };
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
   const onLoggedIn = () => setIsLoggedIn(true);
-
   const onLoggedOut = () => setIsLoggedIn(false);
+
+  useEffect(() => {
+    // check if already logged in and then set isLoggedIn to either true or false.
+    setIsLoggedIn(true);
+  }, []);
+
+  if (isLoggedIn === null) {
+    return <Loader />;
+  }
 
   if (!isLoggedIn) {
     return <AppView routes={loginRoutes(onLoggedIn)} />;

@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './day.module.scss';
+import styles from './day-card.module.scss';
 
-export interface DayProps {
+export interface DayCardProps {
   /**
    * Current Day Number
    */
   dayNumber: number;
 }
 
-export const Day: React.FC<DayProps> = ({ dayNumber }) => (
+export const DayCard: React.FC<DayCardProps> = ({ dayNumber }) => (
   <div className={styles.dayWrapper}>{dayNumber}</div>
 );

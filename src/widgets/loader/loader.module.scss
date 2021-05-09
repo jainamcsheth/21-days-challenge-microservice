@@ -1,0 +1,16 @@
+.loader {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: .25rem solid;
+  border-right: .25rem solid transparent;
+  border-radius: 50%;
+  animation: loader-animation .5s linear infinite;
+}
+
+@keyframes loader-animation {
+  to {
+    transform: rotate(1turn);
+  }
+}

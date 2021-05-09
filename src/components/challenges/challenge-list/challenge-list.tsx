@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '../card/card';
-import styles from './challenge-list.module.scss';
+import { Card } from '../../../widgets/card/card';
+import styles from '../challenges.module.scss';
 
 export type ChallengeListData = {
   /**
@@ -20,18 +20,18 @@ export type ChallengeListData = {
 
   /**
    * Status of the challenge.
-   * TODO Jainam: This should chage o either be of some specific type. Check later.
+   * TODO Jainam: This should chage to either be of some specific type. Check later.
    */
   status: string;
 
   /**
    * Info of the challenge.
-   * TODO Jainam: This should chage o either be of some specific type. Check later.
+   * TODO Jainam: This should chage to either be of some specific type. Check later.
    */
   info: string;
 };
 
-const bgList = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8']
+const bgList = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8'];
 
 export interface ChallengeListProps {
   /**
@@ -52,7 +52,7 @@ export const ChallengeList: React.FC<ChallengeListProps> = ({
         status={item.status}
         url={item.icon}
         info={item.info}
-        bgNo={bgList[index % 8  ]}
+        bgNo={bgList[index % bgList.length]}
       />
     ))}
   </section>
