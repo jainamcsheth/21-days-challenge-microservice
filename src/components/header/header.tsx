@@ -7,6 +7,8 @@ export const Header: React.FC = () => (
     {/* <nav>burger icon</nav>
     <span className={styles.progress}>32% Done</span> */}
     <BackButton />
-    <button type="button" className={styles.button}>Logout</button>
+    <button type="button" className={styles.button}>
+      Logout
+    </button>
   </div>
 );

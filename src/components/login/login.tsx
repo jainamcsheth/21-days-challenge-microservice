@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* TODO Aditi: Remove this consoles */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AccountContext } from '../user-cognito/Accounts';

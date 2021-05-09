@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* TODO Aditi: Remove this consoles */
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import React, { useState } from 'react';
 import Pool from '../user-cognito/UserPoolData';

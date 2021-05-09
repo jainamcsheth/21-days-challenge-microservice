@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './user-details.module.scss';
 
+// User details api call
+
 export const UserDetails: React.FC = () => (
   <section className={styles.userInfo}>
     <div className={styles.userIcon}>

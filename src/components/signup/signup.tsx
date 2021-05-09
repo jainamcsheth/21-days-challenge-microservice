@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* TODO Aditi: Remove this consoles */
 import { CognitoUserAttribute } from 'amazon-cognito-identity-js';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -83,10 +84,10 @@ export const SignUp: React.FC = () => {
             <option value="" disabled>
               Select Sex:
             </option>
-            <option value="F">Female</option>
-            <option value="M">Male</option>
-            <option value="O">Other</option>
-            <option value="P">Prefer not to say</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
+            <option value="PreferNotToSay">Prefer not to say</option>
           </select>
         </label>
         <br />

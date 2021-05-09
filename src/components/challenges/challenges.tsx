@@ -4,7 +4,7 @@ import { Header } from '../header/header';
 import { UserDetails } from '../user-details/user-details';
 import {
   ChallengeList,
-  ChallengeListData
+  ChallengeListData,
 } from './challenge-list/challenge-list';
 import styles from './challenges.module.scss';
 
@@ -70,7 +70,6 @@ const challengeListData: ChallengeListData[] = [
 
 export const Challenges: React.FC = () => (
   <div className={styles.innerBg}>
-
     <Header />
 
     <div className={styles.row}>

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-return-await */
 /* eslint-disable no-console */
+/* TODO Aditi, TODO Jainam: Remove this consoles, check the escaped lint */
 import { AuthenticationDetails, CognitoUser } from 'amazon-cognito-identity-js';
 import React, { createContext, ReactNode } from 'react';
 import Pool from './UserPoolData';

@@ -1,8 +1,9 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Route, useRoutes } from 'react-router-dom';
 import styles from './app.module.scss';
+import { Home } from './components/home/home';
 import { Status } from './components/user-cognito/status';
-import { baseRoutes, CustomRouteProps, loginRoutes } from './routes';
+import { CustomRouteProps, loginRoutes } from './routes';
 import { Loader } from './widgets/loader/loader';
 
 interface AppViewProps {
@@ -21,11 +22,9 @@ const AppView: React.FC<AppViewProps> = ({ routes }) => {
   return (
     <Suspense fallback={<div>Loading view...</div>}>
       <div className={styles.outerBg}>
-
-          {/* <NavBar /> */}
-          {routedComponent}
-        </div>
-
+        {/* <NavBar /> */}
+        {routedComponent}
+      </div>
     </Suspense>
   );
 };
@@ -51,8 +50,10 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Status onLoggedOut={onLoggedOut} />
-      <AppView routes={baseRoutes()} />
+      <div className={styles.outerBg}>
+        <Status onLoggedOut={onLoggedOut} />
+        <Route path="/" element={<Home />} />
+      </div>
     </>
   );
 };

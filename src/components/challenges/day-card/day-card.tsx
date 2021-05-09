@@ -10,10 +10,10 @@ export interface DayCardProps {
 
 export const DayCard: React.FC<DayCardProps> = ({ dayNumber }) => (
   <div className={styles.dayWrapper}>
-
     <p>{dayNumber}</p>
 
-    <button type="button" className={styles.button}>see challenge</button>
-
-    </div>
+    <button type="button" className={styles.button}>
+      see challenge
+    </button>
+  </div>
 );
