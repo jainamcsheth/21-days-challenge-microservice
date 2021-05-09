@@ -2,6 +2,7 @@
 /* TODO Aditi: Remove this consoles */
 import React, { useContext, useEffect, useState } from 'react';
 import { AccountContext } from './Accounts';
+import styles from './status.module.scss';
 
 interface StatusProps {
   onLoggedOut: () => void;
@@ -27,9 +28,9 @@ export const Status: React.FC<StatusProps> = ({ onLoggedOut }) => {
   return (
     <div>
       {status ? (
-        <div>
+        <div className={styles.loginStatusWrapper}>
           You are logged in.
-          <button onClick={onLogout} type="submit">
+          <button onClick={onLogout} className={styles.button} type="submit">
             Logout
           </button>
         </div>

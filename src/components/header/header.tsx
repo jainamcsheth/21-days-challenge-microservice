@@ -1,14 +1,14 @@
 import React from 'react';
-import { BackButton } from '../../widgets/back-button/back-button';
+import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 
 export const Header: React.FC = () => (
   <div className={styles.headerRow}>
     {/* <nav>burger icon</nav>
     <span className={styles.progress}>32% Done</span> */}
-    <BackButton />
-    <button type="button" className={styles.button}>
+
+<Link to="/login"> <button type="button" className={styles.button}>
       Logout
-    </button>
+    </button></Link>
   </div>
 );

@@ -1,0 +1,18 @@
+
+.button {
+  background: #fff;
+  border: 2px solid #aaa;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  margin-left:10px ;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.loginStatusWrapper {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  padding: 0 0 10px 0;
+  justify-content: flex-end;
+}

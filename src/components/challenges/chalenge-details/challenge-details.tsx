@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../header/header';
+import { BackButton } from '../../../widgets/back-button/back-button';
 import styles from '../challenges.module.scss';
 import { DayCard } from '../day-card/day-card';
 
@@ -30,7 +30,7 @@ const challengeDaysList = challengeDays.map((item) => (
 
 export const ChallengeDetails: React.FC = () => (
   <div className={styles.challengeWrapper}>
-    <Header />
+   <BackButton />
     <div className={styles.challengeHeader}>
       <h1>Challenge name that user clicked on will appear here</h1>
       <img src="https://picsum.photos/100/100" alt="placeholder img" />

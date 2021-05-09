@@ -12,7 +12,7 @@ export const UserDetails: React.FC = () => (
         alt="placeholder img"
       />
       <h1 className={styles.heading}>
-        Good Afternoon,
+        Hello
         <br /> Jainam Sheth{' '}
       </h1>
     </div>
