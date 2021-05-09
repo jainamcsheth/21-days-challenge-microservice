@@ -1,11 +1,18 @@
 .headerRow {
   display: flex;
   justify-content: space-between;
-  width: 44%;
-  margin-bottom: 5rem;
+  // width: 44%;
+  margin-bottom: 3rem;
   color: #4b3a3a;
 }
 
 .progress {
   font-weight: bold;
+}
+
+.button {
+  background: #fff;
+  border: 2px solid #aaa;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
 }

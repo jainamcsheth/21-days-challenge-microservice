@@ -44,7 +44,9 @@ export const Card: React.FC<CardProps> = ({
     </div>
     <div className={styles.cardFooter}>
       <span className={styles.cardTxt}>{status}</span>
-      <button type="button" className={`${styles.cardButton} ${styles[bgNo]}`}>
+      {/* TODO :: Button copy should be start or restart based on the challenge not started
+      or already started */}
+      <button type="button" className={`${styles.cardButton}`}>
         Start
       </button>
     </div>

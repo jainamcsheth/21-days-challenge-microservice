@@ -21,11 +21,11 @@ const AppView: React.FC<AppViewProps> = ({ routes }) => {
   return (
     <Suspense fallback={<div>Loading view...</div>}>
       <div className={styles.outerBg}>
-        <div className={styles.innerBg}>
+
           {/* <NavBar /> */}
           {routedComponent}
         </div>
-      </div>
+
     </Suspense>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from '../../header/header';
 import styles from '../challenges.module.scss';
 import { DayCard } from '../day-card/day-card';
 
@@ -28,10 +29,11 @@ const challengeDaysList = challengeDays.map((item) => (
 ));
 
 export const ChallengeDetails: React.FC = () => (
-  <div className={styles.mainContent}>
+  <div className={styles.challengeWrapper}>
+    <Header />
     <div className={styles.challengeHeader}>
-      <h1>Challenge name</h1>
-      <img src="https://via.placeholder.com/100" alt="placeholder img" />
+      <h1>Challenge name that user clicked on will appear here</h1>
+      <img src="https://picsum.photos/100/100" alt="placeholder img" />
       <p>
         Do you enjoy cooking? So this is the ideal challenge for you. Here you
         will 21 ideas to diversify your dishes

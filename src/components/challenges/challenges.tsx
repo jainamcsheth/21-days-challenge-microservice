@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Header } from '../header/header';
 import { UserDetails } from '../user-details/user-details';
 import {
   ChallengeList,
-  ChallengeListData,
+  ChallengeListData
 } from './challenge-list/challenge-list';
 import styles from './challenges.module.scss';
 
@@ -68,14 +69,20 @@ const challengeListData: ChallengeListData[] = [
 ];
 
 export const Challenges: React.FC = () => (
-  <div className={styles.row}>
-    <div className={styles.leftBar}>
-      <UserDetails />
-    </div>
-    <div className={styles.mainContent}>
-      <ChallengeList challengeListData={challengeListData} />
-    </div>
+  <div className={styles.innerBg}>
 
-    <Link to="/challenge/1">To challenge, will change</Link>
+    <Header />
+
+    <div className={styles.row}>
+      <div className={styles.leftBar}>
+        <UserDetails />
+      </div>
+
+      <div className={styles.mainContent}>
+        <ChallengeList challengeListData={challengeListData} />
+      </div>
+
+      <Link to="/challenge/1">To challenge, will change</Link>
+    </div>
   </div>
 );
