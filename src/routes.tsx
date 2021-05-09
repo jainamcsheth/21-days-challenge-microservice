@@ -5,6 +5,7 @@ import { ForgotPassword } from './components/forgotpassword/forgotpassword';
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { SignUp } from './components/signup/signup';
+import { BackButton } from './widgets/back-button/back-button';
 
 // const LazyLoadedComponent = React.lazy(
 //   () => import('./components/to-be-deleted/to-be-deleted'),
@@ -30,12 +31,16 @@ export const baseRoutes = (): CustomRouteProps => ({
       {
         path: '/challenge/:challengeId',
         element: <ChallengeDetails />,
-        // children: [
-        //   {
-        //     path: '/:taskNo',
-        //     element: <TaskDetails />
-        //   }
-        // ]
+        children: [
+          {
+            path: '/:dayNo',
+            element: <BackButton />
+          }
+        ]
+      },
+      {
+        path: '/challenges/:challengeId/:dayNo',
+        element: <BackButton />,
       },
     ],
   },

@@ -29,6 +29,7 @@ export type ChallengeListData = {
    * TODO Jainam: This should chage to either be of some specific type. Check later.
    */
   info: string;
+
 };
 
 const bgList = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8'];
@@ -41,13 +42,13 @@ export interface ChallengeListProps {
 }
 
 export const ChallengeList: React.FC<ChallengeListProps> = ({
-  challengeListData,
+  challengeListData
 }) => (
-  // const challengeList = challengeListData.map((item) => <Card key={item.id} />
   <section className={styles.row}>
     {challengeListData.map((item, index) => (
       <Card
         key={item.id}
+        challengeId={item.id}
         name={item.name}
         status={item.status}
         url={item.icon}

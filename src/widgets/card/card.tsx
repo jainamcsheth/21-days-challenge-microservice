@@ -28,6 +28,11 @@ export interface CardProps {
    * bgnumber of the card to be shown.
    */
   bgNo: string;
+
+   /**
+   * challengeId of the card to be shown.
+   */
+  challengeId: number;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -36,16 +41,17 @@ export const Card: React.FC<CardProps> = ({
   url,
   info,
   bgNo,
+  challengeId
 }) => {
   const navigate = useNavigate();
 
-  const goToChallengeDetail = (challengeID: string) => {
+  const goToChallengeDetail = (challengeID: number) => {
     navigate(`/challenge/${challengeID}`);
   }
 
   return (
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-  <div className={styles.card} onClick={()=> goToChallengeDetail(name)}>
+  <div className={styles.card} onClick={()=> goToChallengeDetail(challengeId)}>
     <div className={`${styles.cardBody} ${styles[bgNo]}`}>
       <img className={styles.cardIcon} src={url} alt="challeneg Icon" />
       <h2 className={styles.cardHeading}>{name}</h2>
