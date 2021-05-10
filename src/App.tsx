@@ -52,7 +52,7 @@ const App: React.FC = () => {
     <>
       <div className={styles.outerBg}>
         <Status onLoggedOut={onLoggedOut} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home userId="testApi2" />} />
       </div>
     </>
   );
