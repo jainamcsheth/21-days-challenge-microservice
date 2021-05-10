@@ -1,11 +1,11 @@
 import { Navigate, PartialRouteObject } from 'react-router';
 import { ChallengeDetails } from './components/challenges/chalenge-details/challenge-details';
 import { Challenges } from './components/challenges/challenges';
+import { Daychallenge } from './components/daychallenge/daychallenge';
 import { ForgotPassword } from './components/forgotpassword/forgotpassword';
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { SignUp } from './components/signup/signup';
-import { BackButton } from './widgets/back-button/back-button';
 
 // const LazyLoadedComponent = React.lazy(
 //   () => import('./components/to-be-deleted/to-be-deleted'),
@@ -31,16 +31,16 @@ export const baseRoutes = (): CustomRouteProps => ({
       {
         path: '/challenge/:challengeId',
         element: <ChallengeDetails />,
-        children: [
-          {
-            path: '/:dayNo',
-            element: <BackButton />
-          }
-        ]
+        // children: [
+        //   {
+        //     path: '/:dayNo',
+        //     element: <BackButton />
+        //   }
+        // ]
       },
       {
         path: '/challenges/:challengeId/:dayNo',
-        element: <BackButton />,
+        element: <Daychallenge />,
       },
     ],
   },

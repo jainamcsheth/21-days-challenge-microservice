@@ -1,4 +1,5 @@
 import React from 'react';
+import { Daychallenge } from '../daychallenge/daychallenge';
 import styles from './user-details.module.scss';
 
 // User details api call
@@ -24,5 +25,6 @@ export const UserDetails: React.FC = () => (
     <strong>Challenge Name</strong>
     <h2 className={styles.subHeading}>02. In Progress</h2>
     <strong>Challenge Name</strong>
+    <Daychallenge/>
   </section>
 );
