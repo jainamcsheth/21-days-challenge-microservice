@@ -25,6 +25,6 @@ export const UserDetails: React.FC = () => (
     <strong>Challenge Name</strong>
     <h2 className={styles.subHeading}>02. In Progress</h2>
     <strong>Challenge Name</strong>
-    <Daychallenge/>
+    <Daychallenge />
   </section>
 );

@@ -7,8 +7,11 @@ export const Header: React.FC = () => (
     {/* <nav>burger icon</nav>
     <span className={styles.progress}>32% Done</span> */}
 
-<Link to="/login"> <button type="button" className={styles.button}>
-      Logout
-    </button></Link>
+    <Link to="/login">
+      {' '}
+      <button type="button" className={styles.button}>
+        Logout
+      </button>
+    </Link>
   </div>
 );

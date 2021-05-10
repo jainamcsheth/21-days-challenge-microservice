@@ -2,7 +2,7 @@ import React from 'react';
 import { UserDetails } from '../user-details/user-details';
 import {
   ChallengeList,
-  ChallengeListData
+  ChallengeListData,
 } from './challenge-list/challenge-list';
 import styles from './challenges.module.scss';
 
