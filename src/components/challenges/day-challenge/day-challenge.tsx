@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './dayChallenge.module.scss';
+import styles from './day-challenge.module.scss';
 
-export const Daychallenge: React.FC = () => (
+export const DayChallenge: React.FC = () => (
   <div>
     <p className={styles.info}>Tap to see todays challenge</p>
     <div className={styles.challengeCard}>

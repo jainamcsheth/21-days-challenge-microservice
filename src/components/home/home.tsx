@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ChallengeDetails } from '../challenges/chalenge-details/challenge-details';
 import { Challenges } from '../challenges/challenges';
+import { DayChallenge } from '../challenges/day-challenge/day-challenge';
 
 interface HomeProps {
   userId: string;
@@ -82,8 +83,12 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
   return (
     <>
       <Routes>
-        <Route path="/challenge/:id" element={<ChallengeDetails />} />
-        <Route path="*" element={<Challenges />} />
+        <Route path="/challenge/:challengeID" element={<ChallengeDetails />} />
+        <Route
+          path="/challenge/:challengeID/:dayNumber"
+          element={<DayChallenge />}
+        />
+        <Route path="/*" element={<Challenges />} />
       </Routes>
     </>
   );
