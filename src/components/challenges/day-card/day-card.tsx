@@ -10,10 +10,10 @@ export interface DayCardProps {
   /**
    * Current Challenge Number
    */
-  challengeId: number;
+  ChallengeID: number;
 }
 
-export const DayCard: React.FC<DayCardProps> = ({ dayNumber, challengeId }) => {
+export const DayCard: React.FC<DayCardProps> = ({ dayNumber, ChallengeID }) => {
   const navigate = useNavigate();
 
   const gotochallengePage = (day: number, challenge: number) => {
@@ -24,7 +24,7 @@ export const DayCard: React.FC<DayCardProps> = ({ dayNumber, challengeId }) => {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={`${styles.dayWrapper} ${styles.disabled}`}
-      onClick={() => gotochallengePage(dayNumber, challengeId)}
+      onClick={() => gotochallengePage(dayNumber, ChallengeID)}
     >
       <p>{dayNumber}</p>
 

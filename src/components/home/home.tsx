@@ -1,8 +1,13 @@
 /* eslint-disable no-console */
-import axios from 'axios';
+// TODO Aditi: Remove consoles when not required.
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChallengeDetails } from '../challenges/chalenge-details/challenge-details';
+import { axiosInstance } from '../../utils/axios-instance';
+import { ChallengeDetails } from '../challenges/challenge-details/challenge-details';
+import {
+  ChallengeListProps,
+  UserChallengesDetailsProps,
+} from '../challenges/challenge-util';
 import { Challenges } from '../challenges/challenges';
 import { DayChallenge } from '../challenges/day-challenge/day-challenge';
 
@@ -18,77 +23,58 @@ interface HomeProps {
 // 2nd route - user personal data, all
 
 export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
-  const [readChallengeApiResponse, setReadChallengeApiResponse] = useState({});
-  const [
-    readUserChallengesApiResponse,
-    setUserChallengesApiResponse,
-  ] = useState({});
+  const [challengeList, setChallengeList] = useState<ChallengeListProps[]>([]);
+  const [userChallengeDetails, setuserChallengeDetails] = useState<
+    UserChallengesDetailsProps[]
+  >([]);
 
-  const someMethod = (response: any) => {
-    console.log('any: ', response);
-  };
+  const getAllChallengesData = () =>
+    axiosInstance.get(
+      'https://oe2ix8xjv4.execute-api.us-west-2.amazonaws.com/default/microservices-challenge-read',
+    );
 
-  const getAllChallengeDetail = () =>
-    axios
-      .get(
-        'https://oe2ix8xjv4.execute-api.us-west-2.amazonaws.com/default/microservices-challenge-read',
-      )
-      .then((response) => {
-        someMethod(response);
-      })
-      .catch((error) => {
-        console.error(
-          'There was an error while calling lambda api - function:microservices-challenge-read!',
-          error,
-        );
-      });
+  const getUserChallengesData = () =>
+    axiosInstance.post(
+      'https://eewgl4dav1.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserChallenges',
+      {
+        UserID: userId,
+      },
+    );
 
-  const getUserChallenges = () =>
-    axios
-      .post(
-        'https://eewgl4dav1.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserChallenges',
-        {
-          UserID: userId,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        },
-      )
-      .then((response) => console.log(response.data))
-      .catch((error) => {
-        console.error(
-          'There was an error while calling lambda api - function:microservices-challenge-read!',
-          error,
-        );
-      });
+  const fetchUserAndChallengeData = () => {
+    Promise.all([getAllChallengesData(), getUserChallengesData()]).then(
+      (userAndChallengesData) => {
+        const challengesData = userAndChallengesData[0];
+        const userChallenges = userAndChallengesData[1];
 
-  const buildObject = (challengesData: any, userChallenges: any) => {
-    console.log('build method', challengesData);
-    console.log('build method', userChallenges);
-  };
-  const mainApiRequest = async () => {
-    const challengesData = await getAllChallengeDetail();
-    const userChallenges = await getUserChallenges();
-    buildObject(challengesData, userChallenges);
+        setChallengeList(challengesData);
+        setuserChallengeDetails(userChallenges);
+      },
+    );
   };
 
   useEffect(() => {
-    mainApiRequest();
-    console.log(readChallengeApiResponse);
-    console.log(readUserChallengesApiResponse);
-  });
+    fetchUserAndChallengeData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <Routes>
-        <Route path="/challenge/:challengeID" element={<ChallengeDetails />} />
+        <Route path="/challenge/:ChallengeID" element={<ChallengeDetails />} />
         <Route
-          path="/challenge/:challengeID/:dayNumber"
+          path="/challenge/:ChallengeID/:dayNumber"
           element={<DayChallenge />}
         />
-        <Route path="/*" element={<Challenges />} />
+        <Route
+          path="/*"
+          element={
+            <Challenges
+              challenges={challengeList}
+              userChallengeDetails={userChallengeDetails}
+            />
+          }
+        />
       </Routes>
     </>
   );

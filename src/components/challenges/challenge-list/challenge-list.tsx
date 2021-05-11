@@ -1,5 +1,9 @@
 import React from 'react';
 import { Card } from '../../../widgets/card/card';
+import {
+  ChallengeListProps,
+  UserChallengesDetailsProps,
+} from '../challenge-util';
 import styles from '../challenges.module.scss';
 
 export type ChallengeListData = {
@@ -33,27 +37,34 @@ export type ChallengeListData = {
 
 const bgList = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8'];
 
-export interface ChallengeListProps {
+export interface ChallengeListsProps {
   /**
    * Challenge data to be shown in card
    */
-  challengeListData: ChallengeListData[];
+  challenges: ChallengeListProps[];
+  userChallengeDetails: UserChallengesDetailsProps[];
 }
 
-export const ChallengeList: React.FC<ChallengeListProps> = ({
-  challengeListData,
+export const ChallengeList: React.FC<ChallengeListsProps> = ({
+  challenges,
+  userChallengeDetails,
 }) => (
   <section className={styles.row}>
-    {challengeListData.map((item, index) => (
-      <Card
-        key={item.id}
-        challengeId={item.id}
-        name={item.name}
-        status={item.status}
-        url={item.icon}
-        info={item.info}
-        bgNo={bgList[index % bgList.length]}
-      />
-    ))}
+    {challenges.map((item, index) => {
+      const { ChallengeID, ChallengeName, ImageURL, Description } = item;
+      return (
+        <Card
+          key={ChallengeID}
+          ChallengeID={ChallengeID}
+          name={ChallengeName}
+          status={userChallengeDetails.some(
+            (el) => el.ChallengeID === ChallengeID,
+          )}
+          url={ImageURL}
+          info={Description}
+          bgNo={bgList[index % bgList.length]}
+        />
+      );
+    })}
   </section>
 );

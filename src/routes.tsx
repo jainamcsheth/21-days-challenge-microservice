@@ -25,7 +25,7 @@ export interface CustomRouteProps {
 //         element: <Challenges />,
 //       },
 //       {
-//         path: '/challenge/:challengeId',
+//         path: '/challenge/:ChallengeID',
 //         element: <ChallengeDetails />,
 //         // children: [
 //         //   {
