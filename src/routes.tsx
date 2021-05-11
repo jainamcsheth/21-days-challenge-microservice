@@ -48,7 +48,7 @@ export interface CustomRouteProps {
 
 export const loginRoutes = (onLoggedIn: () => void): CustomRouteProps => ({
   Login: {
-    path: '/',
+    path: '/login',
     element: <Login onLoggedIn={onLoggedIn} />,
   },
   SignUp: {
@@ -61,6 +61,6 @@ export const loginRoutes = (onLoggedIn: () => void): CustomRouteProps => ({
   },
   NotFound: {
     path: '*',
-    element: <Navigate to="/" />,
+    element: <Navigate to="/login" />,
   },
 });

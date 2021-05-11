@@ -4,7 +4,6 @@ import styles from './app.module.scss';
 import { Home } from './components/home/home';
 import { Status } from './components/user-cognito/status';
 import { CustomRouteProps, loginRoutes } from './routes';
-import { Loader } from './widgets/loader/loader';
 
 interface AppViewProps {
   /**
@@ -40,9 +39,9 @@ const App: React.FC = () => {
     setIsLoggedIn(true);
   }, []);
 
-  if (isLoggedIn === null) {
-    return <Loader />;
-  }
+  // if (isLoggedIn === null) {
+  //   return <Loader />;
+  // }
 
   if (!isLoggedIn) {
     return <AppView routes={loginRoutes(onLoggedIn)} />;

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* TODO Aditi: Remove this consoles */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AccountContext } from '../user-cognito/Accounts';
 
 interface LoginProps {
@@ -11,6 +11,8 @@ interface LoginProps {
 export const Login: React.FC<LoginProps> = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const { authenticate } = useContext(AccountContext);
 
@@ -25,6 +27,7 @@ export const Login: React.FC<LoginProps> = ({ onLoggedIn }) => {
         console.log('Logged in! ', data);
         createUser(data);
         onLoggedIn();
+        navigate('/');
       })
       .catch((error: number) => {
         console.error('Failed to login! ', error);
