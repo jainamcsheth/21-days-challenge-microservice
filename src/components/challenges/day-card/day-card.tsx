@@ -6,17 +6,17 @@ export interface DayCardProps {
   /**
    * Current Day Number
    */
-  dayNumber: number;
+  dayNumber: string;
   /**
    * Current Challenge Number
    */
-  ChallengeID: number;
+  ChallengeID: string;
 }
 
 export const DayCard: React.FC<DayCardProps> = ({ dayNumber, ChallengeID }) => {
   const navigate = useNavigate();
 
-  const gotochallengePage = (day: number, challenge: number) => {
+  const gotochallengePage = (day: string, challenge: string) => {
     navigate(`/challenge/${challenge}/${day}`);
   };
 

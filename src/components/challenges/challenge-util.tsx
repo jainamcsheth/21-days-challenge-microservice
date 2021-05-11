@@ -1,8 +1,14 @@
+export type DayDetails = {
+  Day: string;
+  Description: string;
+};
+
 export interface ChallengeListProps {
   ChallengeID: string;
   ChallengeName: string;
   Description: string;
   ImageURL: string;
+  DayDetails: DayDetails[];
 }
 
 export interface UserChallengesDetailsProps {
@@ -18,10 +24,10 @@ export type CompletedTasks = {
 
 export type UserStatisticsType = {
   UserID: string;
-  Coins: number,
-  CompletedChallenges: number,
-  EnrolledChallenges: number
-}
+  Coins: number;
+  CompletedChallenges: number;
+  EnrolledChallenges: number;
+};
 
 export interface UserDetailsProps {
   userDetails: UserDetailsType;
@@ -29,13 +35,13 @@ export interface UserDetailsProps {
 }
 
 export interface UserDetailsType {
-  Email:string,
-  Gender: string,
+  Email: string;
+  Gender: string;
   Name: {
-    FirstName: string,
-    LastName: string
-  },
-  UserID: string
+    FirstName: string;
+    LastName: string;
+  };
+  UserID: string;
 }
 
 export interface UserStatisticsProps {

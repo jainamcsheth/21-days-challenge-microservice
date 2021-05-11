@@ -16,16 +16,11 @@ export const Login: React.FC<LoginProps> = ({ onLoggedIn }) => {
 
   const { authenticate } = useContext(AccountContext);
 
-  const createUser = (data: unknown) => {
-    console.log('create user in signup: ', data);
-  };
-
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     authenticate(username, password)
       .then((data: number) => {
         console.log('Logged in! ', data);
-        createUser(data);
         onLoggedIn();
         navigate('/');
       })

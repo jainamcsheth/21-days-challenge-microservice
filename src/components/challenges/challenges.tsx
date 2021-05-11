@@ -5,12 +5,12 @@ import {
   ChallengeListProps,
   UserChallengesDetailsProps,
   UserDetailsType,
-  UserStatisticsType
+  UserStatisticsType,
 } from './challenge-util';
 import styles from './challenges.module.scss';
 
 interface ChallengesProps {
-  userStatistics: UserStatisticsType
+  userStatistics: UserStatisticsType;
   userDetails: UserDetailsType;
   challenges: ChallengeListProps[];
   userChallengeDetails: UserChallengesDetailsProps[];
@@ -27,10 +27,9 @@ export const Challenges: React.FC<ChallengesProps> = ({
 
     <div className={styles.row}>
       <div className={styles.leftBar}>
-
         <UserDetails
           userDetails={userDetails}
-          userStatistics = {userStatistics}
+          userStatistics={userStatistics}
         />
       </div>
 

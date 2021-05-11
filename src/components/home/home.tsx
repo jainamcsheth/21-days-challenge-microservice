@@ -7,9 +7,8 @@ import { ChallengeDetails } from '../challenges/challenge-details/challenge-deta
 import {
   ChallengeListProps,
   UserChallengesDetailsProps,
-
   UserDetailsType,
-  UserStatisticsType
+  UserStatisticsType,
 } from '../challenges/challenge-util';
 import { Challenges } from '../challenges/challenges';
 import { DayChallenge } from '../challenges/day-challenge/day-challenge';
@@ -18,18 +17,17 @@ interface HomeProps {
   userId: string;
 }
 
-// API CALL
-// - challenges
-// - usersDetails
-
-// 1st route -
-// 2nd route - user personal data, all
-
 export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
   const [challengeList, setChallengeList] = useState<ChallengeListProps[]>([]);
-  const [userChallengeDetails, setuserChallengeDetails] = useState<UserChallengesDetailsProps[]>([]);
-  const [userStatistics, setUserStatistics] = useState<UserStatisticsType>({} as UserStatisticsType);
-  const [userDetails, setUserDetails] = useState<UserDetailsType>({} as UserDetailsType);
+  const [userChallengeDetails, setuserChallengeDetails] = useState<
+    UserChallengesDetailsProps[]
+  >([]);
+  const [userStatistics, setUserStatistics] = useState<UserStatisticsType>(
+    {} as UserStatisticsType,
+  );
+  const [userDetails, setUserDetails] = useState<UserDetailsType>(
+    {} as UserDetailsType,
+  );
 
   const getAllChallengesData = () =>
     axiosInstance.get(
@@ -45,11 +43,12 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
     );
 
   const getUserStatisticsData = () =>
-  axiosInstance.post(
-    'https://4n34hjvoo6.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserStatistics',
-    {
-      UserID: userId,
-    },);
+    axiosInstance.post(
+      'https://4n34hjvoo6.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserStatistics',
+      {
+        UserID: userId,
+      },
+    );
 
   const getUserDetailsData = () =>
     axiosInstance.post(
@@ -80,7 +79,7 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
         setUserStatistics(userStatisticsData);
       },
     );
-  }
+  };
 
   useEffect(() => {
     fetchUserAndChallengeData();
@@ -91,10 +90,13 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
   return (
     <>
       <Routes>
-        <Route path="/challenge/:ChallengeID" element={<ChallengeDetails />} />
+        <Route
+          path="/challenge/:ChallengeID"
+          element={<ChallengeDetails challenges={challengeList} />}
+        />
         <Route
           path="/challenge/:ChallengeID/:dayNumber"
-          element={<DayChallenge />}
+          element={<DayChallenge challenges={challengeList} />}
         />
         <Route
           path="/*"

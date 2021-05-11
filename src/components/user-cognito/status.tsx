@@ -29,7 +29,6 @@ export const Status: React.FC<StatusProps> = ({ onLoggedOut }) => {
     <div>
       {status ? (
         <div className={styles.loginStatusWrapper}>
-          You are logged in.
           <button onClick={onLogout} className={styles.button} type="submit">
             Logout
           </button>

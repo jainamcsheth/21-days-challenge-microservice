@@ -29,14 +29,14 @@ const AppView: React.FC<AppViewProps> = ({ routes }) => {
 };
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const onLoggedIn = () => setIsLoggedIn(true);
   const onLoggedOut = () => setIsLoggedIn(false);
 
   useEffect(() => {
     // check if already logged in and then set isLoggedIn to either true or false.
-    setIsLoggedIn(true);
+    // setIsLoggedIn(true);
   }, []);
 
   // if (isLoggedIn === null) {

@@ -15,8 +15,8 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
       <div className={styles.userIcon}>
         <img
           className={styles.userImg}
-          src='https://picsum.photos/100/100'
-          alt='placeholder img'
+          src="https://picsum.photos/100/100"
+          alt="placeholder img"
         />
         <h1 className={styles.heading}>
           Hello
