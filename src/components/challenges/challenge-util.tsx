@@ -15,3 +15,29 @@ export interface UserChallengesDetailsProps {
 export type CompletedTasks = {
   [ChallengeID: string]: string;
 };
+
+export type UserStatisticsType = {
+  UserID: string;
+  Coins: number,
+  CompletedChallenges: number,
+  EnrolledChallenges: number
+}
+
+export interface UserDetailsProps {
+  userDetails: UserDetailsType;
+  userStatistics: UserStatisticsType;
+}
+
+export interface UserDetailsType {
+  Email:string,
+  Gender: string,
+  Name: {
+    FirstName: string,
+    LastName: string
+  },
+  UserID: string
+}
+
+export interface UserStatisticsProps {
+  userStatistics: UserDetailsType;
+}

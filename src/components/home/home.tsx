@@ -7,6 +7,9 @@ import { ChallengeDetails } from '../challenges/challenge-details/challenge-deta
 import {
   ChallengeListProps,
   UserChallengesDetailsProps,
+
+  UserDetailsType,
+  UserStatisticsType
 } from '../challenges/challenge-util';
 import { Challenges } from '../challenges/challenges';
 import { DayChallenge } from '../challenges/day-challenge/day-challenge';
@@ -24,9 +27,9 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
   const [challengeList, setChallengeList] = useState<ChallengeListProps[]>([]);
-  const [userChallengeDetails, setuserChallengeDetails] = useState<
-    UserChallengesDetailsProps[]
-  >([]);
+  const [userChallengeDetails, setuserChallengeDetails] = useState<UserChallengesDetailsProps[]>([]);
+  const [userStatistics, setUserStatistics] = useState<UserStatisticsType>({} as UserStatisticsType);
+  const [userDetails, setUserDetails] = useState<UserDetailsType>({} as UserDetailsType);
 
   const getAllChallengesData = () =>
     axiosInstance.get(
@@ -41,6 +44,20 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
       },
     );
 
+  const getUserStatisticsData = () =>
+  axiosInstance.post(
+    'https://4n34hjvoo6.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserStatistics',
+    {
+      UserID: userId,
+    },);
+
+  const getUserDetailsData = () =>
+    axiosInstance.post(
+      'https://xcmzy3zzv8.execute-api.us-west-2.amazonaws.com/default/microservices-user-getUserDetails',
+      {
+        UserID: userId,
+      },
+    );
   const fetchUserAndChallengeData = () => {
     Promise.all([getAllChallengesData(), getUserChallengesData()]).then(
       (userAndChallengesData) => {
@@ -53,8 +70,21 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
     );
   };
 
+  const fetchUserDetailsandStatisticsData = () => {
+    Promise.all([getUserDetailsData(), getUserStatisticsData()]).then(
+      (data) => {
+        const userDetailsData = data[0];
+        const userStatisticsData = data[1];
+
+        setUserDetails(userDetailsData);
+        setUserStatistics(userStatisticsData);
+      },
+    );
+  }
+
   useEffect(() => {
     fetchUserAndChallengeData();
+    fetchUserDetailsandStatisticsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -70,6 +100,8 @@ export const Home: React.FC<HomeProps> = ({ userId }: HomeProps) => {
           path="/*"
           element={
             <Challenges
+              userStatistics={userStatistics}
+              userDetails={userDetails}
               challenges={challengeList}
               userChallengeDetails={userChallengeDetails}
             />
