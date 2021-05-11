@@ -27,6 +27,31 @@
   padding: .5rem 1rem;
   font-weight: bold;
   width: 250px;
+  cursor: pointer;
 }
 
 // background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+
+.dayChallengeWrapper {
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.challengeHeader {
+  width: 40%;
+}
+
+.buttonCentre {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7rem;
+}
+
+.challengeCardWrapper {
+  text-align: center;
+}

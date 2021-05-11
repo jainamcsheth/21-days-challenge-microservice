@@ -1,17 +1,3 @@
-// .card {
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   min-width: 0;
-//   word-wrap: break-word;
-//   background-color: #fff;
-//   background-clip: border-box;
-//   border: 1px solid rgba(0,0,0,.125);
-//   border-radius: .5rem;
-//   color: #fff3ca;
-//   margin: 1rem 1rem;
-// }
-
 .card {
   display: flex;
   flex-direction: column;
@@ -36,17 +22,9 @@
   color:#fff;
   padding: 2em 1.5em .5em 1.5em;
   flex-grow:1;
+  margin: .25em;
  }
 
-// .cardBody {
-//   flex: 1 1 auto;
-//   margin: 1rem 1rem;
-//   padding: 1rem 1rem;
-//   background-color: #ffca43;
-//   border-radius: .25rem;
-//   text-align: center;
-//   color: black;
-// }
 .cardIcon {
   border-radius: 50%;
 }
