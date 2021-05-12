@@ -14,7 +14,7 @@ export interface ChallengeListProps {
 export interface UserChallengesDetailsProps {
   UserID: string;
   ChallengeID: string;
-  StartDate: Date;
+  StartDate: string;
   CompletedTasks: CompletedTasks;
 }
 

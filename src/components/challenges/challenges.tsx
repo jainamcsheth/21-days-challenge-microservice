@@ -22,9 +22,7 @@ export const Challenges: React.FC<ChallengesProps> = ({
   challenges,
   userChallengeDetails,
 }) => (
-  <div className={styles.innerBg}>
-    {/* <Header /> */}
-
+  <div className={styles.innerBox}>
     <div className={styles.row}>
       <div className={styles.leftBar}>
         <UserDetails

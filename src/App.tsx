@@ -1,4 +1,5 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import cx from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { Route, useRoutes } from 'react-router-dom';
 import styles from './app.module.scss';
 import { Home } from './components/home/home';
@@ -19,12 +20,9 @@ const AppView: React.FC<AppViewProps> = ({ routes }) => {
   console.log('Dum', routes);
 
   return (
-    <Suspense fallback={<div>Loading view...</div>}>
-      <div className={styles.outerBg}>
-        {/* <NavBar /> */}
-        {routedComponent}
-      </div>
-    </Suspense>
+    // <Suspense fallback={<div>Loading view...</div>}>
+    <div className={cx('appWrapper', styles.outerBox)}>{routedComponent}</div>
+    // </Suspense>
   );
 };
 
@@ -49,7 +47,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className={styles.outerBg}>
+      <div className={cx('appWrapper', styles.outerBox)}>
         <Status onLoggedOut={onLoggedOut} />
         <Route path="/" element={<Home userId="testApi2" />} />
       </div>

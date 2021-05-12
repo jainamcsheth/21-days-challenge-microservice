@@ -60,16 +60,14 @@ export const Account: React.FC<AccountProps> = ({ children }) => {
   };
 
   return (
-    <div>
-      <AccountContext.Provider
-        value={{
-          authenticate,
-          getSession,
-          logout,
-        }}
-      >
-        {children}
-      </AccountContext.Provider>
-    </div>
+    <AccountContext.Provider
+      value={{
+        authenticate,
+        getSession,
+        logout,
+      }}
+    >
+      {children}
+    </AccountContext.Provider>
   );
 };
