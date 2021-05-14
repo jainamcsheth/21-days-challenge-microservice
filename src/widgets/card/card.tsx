@@ -1,8 +1,10 @@
 import cx from 'classnames';
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { getDaysDifference } from '../../utils';
-import { axiosInstance } from '../../utils/axios-instance';
+import { UserStatisticsType } from '../../components/challenges/challenge-util';
+import { startChallenge } from '../../services/user-service';
+import { updateEnrolledChallenges } from '../../services/user-statistics-service';
+import { getDaysDifference, getUserID } from '../../utils';
 import styles from './card.module.scss';
 
 interface CardProps {
@@ -42,10 +44,24 @@ interface CardProps {
    * @default '1'
    */
   bgNo?: string;
-}
 
-const START_CHALLENGE_URL =
-  'https://8qh2u27nuj.execute-api.us-west-2.amazonaws.com/default/microservices-user-startChallenge';
+  /**
+   * Is the challenge Completed.
+   * @default false
+   */
+  isChallengeCompleted?: boolean;
+
+  /**
+   * User Statistics data
+   */
+  userStatistics: UserStatisticsType;
+
+  /**
+   * Used to refetch the data in home component.
+   * This will be called on back navigate.
+   */
+  refetchApi?: () => void;
+}
 
 export const Card: React.FC<CardProps> = ({
   ChallengeID,
@@ -55,8 +71,12 @@ export const Card: React.FC<CardProps> = ({
   description,
   startDate,
   bgNo = '1',
+  isChallengeCompleted = false,
+  userStatistics,
+  refetchApi,
 }) => {
   const navigate = useNavigate();
+  const userId = getUserID();
 
   const getChallengeStatus = () => {
     if (!startDate) {
@@ -70,17 +90,31 @@ export const Card: React.FC<CardProps> = ({
     return `${currentDay}/21`;
   };
 
-  const startChallenge = () =>
-    axiosInstance.post(START_CHALLENGE_URL, {
-      UserID: 'testApi2',
-      ChallengeID,
-    });
-
   const handleCardClick = () => {
     if (!isStarted) {
-      startChallenge();
+      // Update User DB with current challenge as started
+      startChallenge(userId!, ChallengeID).then(() => {
+        updateEnrolledChallenges(
+          userId!,
+          userStatistics.EnrolledChallenges + 1,
+        ).then(() => {
+          if (refetchApi) {
+            refetchApi();
+          }
+        });
+      });
     }
     navigate(`/challenge/${ChallengeID}`);
+  };
+
+  const buttonText = (): string => {
+    if (isChallengeCompleted) {
+      return 'COMPLETED';
+    }
+    if (isStarted) {
+      return 'OPEN';
+    }
+    return 'START';
   };
 
   return (
@@ -97,7 +131,7 @@ export const Card: React.FC<CardProps> = ({
       <div className={styles.cardFooter}>
         <span className={styles.challengeStatus}>{getChallengeStatus()}</span>
         <button type="button" className={cx(styles.cardButton, styles[bgNo])}>
-          {isStarted ? 'OPEN' : 'START'}
+          {buttonText()}
         </button>
       </div>
     </div>

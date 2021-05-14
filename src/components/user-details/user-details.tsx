@@ -2,8 +2,6 @@ import React from 'react';
 import { UserDetailsProps } from '../challenges/challenge-util';
 import styles from './user-details.module.scss';
 
-// User details api call
-
 export const UserDetails: React.FC<UserDetailsProps> = ({
   userDetails,
   userStatistics,
@@ -20,14 +18,17 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
         />
         <h1 className={styles.heading}>
           Hello
-          <br /> {Name?.FirstName}!
+          <br /> {Name?.FirstName}
           <br />
         </h1>
       </div>
-      <p>
-        Enjoy the little things for one day you may look back and realize they
-        were the big things.
-      </p>
+
+      <div className="typewriter">
+        <p className="typewriter-text">
+          Enjoy the little things for one day you may look back and realize they
+          were the big things.
+        </p>
+      </div>
 
       <h3>Statistics</h3>
       <div className={styles.statisticsWrapper}>
@@ -37,7 +38,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
         </div>
         <div className={styles.statisticsBlock}>
           <h3 className={styles.statisticsValue}>{EnrolledChallenges}</h3>
-          <strong>Current challenges</strong>
+          <strong>Enrolled challenges</strong>
         </div>
 
         <div className={styles.statisticsBlock}>

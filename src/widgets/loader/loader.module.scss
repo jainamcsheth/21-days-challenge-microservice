@@ -1,10 +1,10 @@
 .loader {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   vertical-align: text-bottom;
-  border: .25rem solid;
-  border-right: .25rem solid transparent;
+  border: .20rem solid;
+  border-right: .20rem solid transparent;
   border-radius: 50%;
   animation: loader-animation .5s linear infinite;
 }

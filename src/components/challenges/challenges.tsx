@@ -10,10 +10,28 @@ import {
 import styles from './challenges.module.scss';
 
 interface ChallengesProps {
+  /**
+   * User Statistics data
+   */
   userStatistics: UserStatisticsType;
+
+  /**
+   * User details data
+   */
   userDetails: UserDetailsType;
+
+  /**
+   * Challenge data
+   */
   challenges: ChallengeListProps[];
+
   userChallengeDetails: UserChallengesDetailsProps[];
+
+  /**
+   * Used to refetch the data in home component.
+   * This will be called on back navigate.
+   */
+  refetchApi?: () => void;
 }
 
 export const Challenges: React.FC<ChallengesProps> = ({
@@ -21,6 +39,7 @@ export const Challenges: React.FC<ChallengesProps> = ({
   userDetails,
   challenges,
   userChallengeDetails,
+  refetchApi,
 }) => (
   <div className={styles.innerBox}>
     <div className={styles.row}>
@@ -35,6 +54,8 @@ export const Challenges: React.FC<ChallengesProps> = ({
         <ChallengeList
           challenges={challenges}
           userChallengeDetails={userChallengeDetails}
+          userStatistics={userStatistics}
+          refetchApi={refetchApi}
         />
       </div>
     </div>

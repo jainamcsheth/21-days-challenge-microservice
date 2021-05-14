@@ -1,9 +1,9 @@
 import cx from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Route, useRoutes } from 'react-router-dom';
 import styles from './app.module.scss';
 import { Home } from './components/home/home';
-import { Status } from './components/user-cognito/status';
+import { Status } from './components/libs/status';
 import { CustomRouteProps, loginRoutes } from './routes';
 
 interface AppViewProps {
@@ -15,32 +15,31 @@ interface AppViewProps {
 
 const AppView: React.FC<AppViewProps> = ({ routes }) => {
   const routedComponent = useRoutes(Object.values(routes));
-  // TODO Aditi: Remove console.log once done
-  // eslint-disable-next-line no-console
-  console.log('Dum', routes);
 
   return (
-    // <Suspense fallback={<div>Loading view...</div>}>
     <div className={cx('appWrapper', styles.outerBox)}>{routedComponent}</div>
-    // </Suspense>
   );
 };
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+
+  const checkForSession = () => {
+    const userId = sessionStorage.getItem('userId');
+    if (userId) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  };
 
   const onLoggedIn = () => setIsLoggedIn(true);
+
   const onLoggedOut = () => setIsLoggedIn(false);
 
-  useEffect(() => {
-    // check if already logged in and then set isLoggedIn to either true or false.
-    // setIsLoggedIn(true);
-  }, []);
-
-  // if (isLoggedIn === null) {
-  //   return <Loader />;
-  // }
-
+  if (isLoggedIn === null) {
+    checkForSession();
+  }
   if (!isLoggedIn) {
     return <AppView routes={loginRoutes(onLoggedIn)} />;
   }
@@ -49,7 +48,7 @@ const App: React.FC = () => {
     <>
       <div className={cx('appWrapper', styles.outerBox)}>
         <Status onLoggedOut={onLoggedOut} />
-        <Route path="/" element={<Home userId="testApi2" />} />
+        <Route path="/challenge" element={<Home />} />
       </div>
     </>
   );

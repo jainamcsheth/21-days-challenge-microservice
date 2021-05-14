@@ -1,8 +1,9 @@
+import '@fontsource/roboto';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { Account } from './components/user-cognito/Accounts';
+import { Account } from './components/libs/Accounts';
 import './css/common.scss';
 import reportWebVitals from './reportWebVitals';
 
